@@ -83,11 +83,11 @@
     /* Terminal Cursor Block Blink */
     .term-cursor-blink {
       display: inline-block;
-      width: 8px;
-      height: 14px;
+      width: 7px;
+      height: 13px;
       background-color: #10b981;
       vertical-align: middle;
-      margin-left: 5px;
+      margin-left: 4px;
       animation: termBlink 0.8s infinite;
     }
     @keyframes termBlink {
@@ -98,12 +98,17 @@
     /* Timeline Scroll Effect */
     .timeline-wrapper {
       position: relative;
-      padding-left: 32px;
+      padding-left: 24px;
+    }
+    @media (min-width: 768px) {
+      .timeline-wrapper {
+        padding-left: 32px;
+      }
     }
     .timeline-wrapper::before {
       content: '';
       position: absolute;
-      left: 8px;
+      left: 6px;
       top: 15px;
       bottom: 25px;
       width: 3px;
@@ -111,10 +116,15 @@
       border-radius: 2px;
       box-shadow: 0 0 10px var(--accent-glow);
     }
+    @media (min-width: 768px) {
+      .timeline-wrapper::before {
+        left: 8px;
+      }
+    }
     
     .timeline-node {
       position: relative;
-      margin-bottom: 2.8rem;
+      margin-bottom: 2.5rem;
       opacity: 0;
       transform: translateY(35px);
       transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -127,15 +137,22 @@
     .timeline-node::before {
       content: '';
       position: absolute;
-      left: -32px;
+      left: -24px;
       top: 22px;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       background: var(--bg-dark);
       border: 3px solid #334155;
       transition: all 0.4s ease;
       z-index: 2;
+    }
+    @media (min-width: 768px) {
+      .timeline-node::before {
+        left: -32px;
+        width: 16px;
+        height: 16px;
+      }
     }
     .timeline-node.visible::before {
       border-color: var(--accent);
@@ -148,8 +165,13 @@
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      padding: 1.6rem;
+      padding: 1.2rem;
       transition: all 0.3s ease;
+    }
+    @media (min-width: 768px) {
+      .custom-card {
+        padding: 1.6rem;
+      }
     }
     .custom-card:hover {
       border-color: rgba(56, 189, 248, 0.7);
@@ -163,10 +185,10 @@
     }
     .timeline-list li {
       position: relative;
-      padding-left: 1.6rem;
+      padding-left: 1.5rem;
       margin-bottom: 0.75rem;
       color: var(--text-muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
     .timeline-list li::before {
       content: '➔';
@@ -181,17 +203,25 @@
       background-color: #121c2e;
       border: 1px solid #1e3a5f;
       color: #e2e8f0;
-      padding: 9px 20px;
+      padding: 7px 15px;
       border-radius: 50px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin: 5px 4px;
+      gap: 6px;
+      margin: 4px 3px;
       cursor: pointer;
       user-select: none;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (min-width: 768px) {
+      .skill-pill {
+        padding: 9px 20px;
+        font-size: 0.85rem;
+        gap: 8px;
+        margin: 5px 4px;
+      }
     }
     .skill-pill:hover {
       background-color: #1a2942;
@@ -206,39 +236,47 @@
       box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
     }
 
-    /* Responsive Diagram Layouts */
+    /* ===================================================
+       100% AUTO-FIT RESPONSIVE DIAGRAM CONTAINERS
+       =================================================== */
     .visual-diagram-box {
       background-color: var(--bg-inner);
       border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 16px;
-      margin: 1.2rem 0 0.5rem 0;
+      border-radius: 14px;
+      padding: 10px 8px;
+      margin: 1rem 0 0.5rem 0;
       position: relative;
-      overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #1e3a5f #070d19;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
-    .visual-diagram-box::-webkit-scrollbar {
-      height: 5px;
-    }
-    .visual-diagram-box::-webkit-scrollbar-thumb {
-      background: #1e3a5f;
-      border-radius: 4px;
+    @media (min-width: 768px) {
+      .visual-diagram-box {
+        border-radius: 16px;
+        padding: 16px 14px;
+        margin: 1.2rem 0 0.5rem 0;
+      }
     }
 
     .diagram-flow-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-width: 540px;
-      gap: 8px;
+      width: 100%;
+      gap: 4px;
       position: relative;
+      box-sizing: border-box;
+    }
+    @media (min-width: 768px) {
+      .diagram-flow-row {
+        gap: 8px;
+      }
     }
 
     .diagram-rect {
       background-color: #070e1b;
-      border-radius: 10px;
-      padding: 10px 12px;
+      border-radius: 8px;
+      padding: 6px 4px;
       text-align: center;
       transition: all 0.25s ease;
       cursor: pointer;
@@ -246,49 +284,90 @@
       flex-direction: column;
       justify-content: center;
       box-sizing: border-box;
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .diagram-rect {
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
     }
     .diagram-rect:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
     .diagram-rect-cyan {
-      border: 1.5px solid var(--accent);
+      border: 1px solid var(--accent);
+    }
+    @media (min-width: 768px) {
+      .diagram-rect-cyan {
+        border-width: 1.5px;
+      }
     }
     .diagram-rect-cyan:hover {
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
     }
     .diagram-rect-purple {
-      border: 1.5px solid var(--accent-purple);
+      border: 1px solid var(--accent-purple);
+    }
+    @media (min-width: 768px) {
+      .diagram-rect-purple {
+        border-width: 1.5px;
+      }
     }
     .diagram-rect-purple:hover {
-      box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
     }
     .diagram-rect-green {
-      border: 1.5px solid var(--accent-green);
+      border: 1px solid var(--accent-green);
+    }
+    @media (min-width: 768px) {
+      .diagram-rect-green {
+        border-width: 1.5px;
+      }
     }
     .diagram-rect-green:hover {
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
+    }
+
+    .diagram-title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: clamp(0.62rem, 2.2vw, 0.85rem);
+      margin-bottom: 2px;
+      line-height: 1.2;
     }
 
     .diagram-item-row {
-      font-size: 0.74rem;
+      font-size: clamp(0.52rem, 1.8vw, 0.74rem);
       color: var(--text-muted);
-      margin: 2px 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      white-space: nowrap;
+      margin: 1px 0;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+
+    .diagram-icon {
+      font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+      margin-bottom: 3px;
     }
 
     .top-capsule-badge {
-      border: 1.5px solid var(--accent-green);
+      border: 1px solid var(--accent-green);
       background: rgba(16, 185, 129, 0.08);
       color: var(--accent-green);
-      font-size: 0.8rem;
+      font-size: clamp(0.65rem, 2.2vw, 0.8rem);
       font-weight: 600;
-      padding: 5px 18px;
+      padding: 4px 12px;
       border-radius: 50px;
       display: inline-block;
       transition: all 0.2s ease;
-      white-space: nowrap;
+      max-width: 100%;
+    }
+    @media (min-width: 768px) {
+      .top-capsule-badge {
+        border-width: 1.5px;
+        padding: 5px 18px;
+      }
     }
     .top-capsule-badge:hover {
       background: rgba(16, 185, 129, 0.18);
@@ -297,19 +376,27 @@
 
     .diag-status-pill {
       background-color: #07101e;
-      border: 1.5px solid var(--accent);
+      border: 1px solid var(--accent);
       color: var(--accent);
-      font-size: 0.78rem;
+      font-size: clamp(0.58rem, 2vw, 0.78rem);
       font-weight: 600;
-      padding: 8px 18px;
+      padding: 6px 8px;
       border-radius: 50px;
       text-align: center;
       display: block;
       width: 100%;
-      min-width: 540px;
+      margin-top: 8px;
       transition: all 0.25s ease;
       cursor: pointer;
-      white-space: nowrap;
+      box-sizing: border-box;
+      line-height: 1.2;
+    }
+    @media (min-width: 768px) {
+      .diag-status-pill {
+        border-width: 1.5px;
+        padding: 8px 18px;
+        margin-top: 12px;
+      }
     }
     .diag-status-pill:hover {
       background-color: #0e1e36;
@@ -318,21 +405,35 @@
       transform: translateY(-2px);
     }
 
-    /* Live Animated Dashed Flow Connector */
+    /* Live Animated Flow Connector */
     .live-flow-line {
-      height: 3px;
+      height: 2px;
       flex: 1;
-      min-width: 25px;
+      min-width: 8px;
       background: repeating-linear-gradient(
         90deg,
         var(--accent) 0px,
-        var(--accent) 8px,
-        transparent 8px,
-        transparent 16px
+        var(--accent) 5px,
+        transparent 5px,
+        transparent 10px
       );
-      background-size: 32px 100%;
+      background-size: 20px 100%;
       animation: moveFlow 1.2s linear infinite;
       border-radius: 2px;
+    }
+    @media (min-width: 768px) {
+      .live-flow-line {
+        height: 3px;
+        min-width: 16px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--accent) 0px,
+          var(--accent) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+        background-size: 32px 100%;
+      }
     }
     @keyframes moveFlow {
       0% { background-position: 0 0; }
@@ -344,21 +445,32 @@
       background-color: #040812;
       border: 1px solid #1e3a5f;
       border-radius: 14px;
-      padding: 14px;
+      padding: 10px;
+    }
+    @media (min-width: 768px) {
+      .sec-console-container {
+        padding: 14px;
+      }
     }
     .sec-header-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
       border-bottom: 1px solid #112238;
     }
     .term-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       display: inline-block;
+    }
+    @media (min-width: 768px) {
+      .term-dot {
+        width: 10px;
+        height: 10px;
+      }
     }
     .term-red { background-color: #ef4444; }
     .term-yellow { background-color: #f59e0b; }
@@ -366,71 +478,98 @@
 
     .sec-terminal-left {
       background-color: #060c18;
-      border: 1.5px solid #0284c7;
-      border-radius: 10px;
-      padding: 12px;
+      border: 1px solid #0284c7;
+      border-radius: 8px;
+      padding: 8px;
       font-family: 'Courier New', Courier, monospace;
-      font-size: 0.74rem;
+      font-size: clamp(0.62rem, 1.8vw, 0.74rem);
       height: 100%;
+    }
+    @media (min-width: 768px) {
+      .sec-terminal-left {
+        border-width: 1.5px;
+        border-radius: 10px;
+        padding: 12px;
+      }
     }
     .sec-diag-right {
       background-color: #060c18;
-      border: 1.5px solid #1e3a5f;
-      border-radius: 10px;
-      padding: 12px;
+      border: 1px solid #1e3a5f;
+      border-radius: 8px;
+      padding: 8px;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+    @media (min-width: 768px) {
+      .sec-diag-right {
+        border-width: 1.5px;
+        border-radius: 10px;
+        padding: 12px;
+      }
+    }
     .sec-status-box {
-      border: 1.5px solid #10b981;
+      border: 1px solid #10b981;
       background: rgba(16, 185, 129, 0.08);
-      border-radius: 8px;
-      padding: 8px;
+      border-radius: 6px;
+      padding: 6px;
       text-align: center;
+    }
+    @media (min-width: 768px) {
+      .sec-status-box {
+        border-width: 1.5px;
+        border-radius: 8px;
+        padding: 8px;
+      }
     }
     .sec-hub-bar {
       background: #081120;
       border: 1px solid #1e3a5f;
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin-top: 12px;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-top: 10px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* Academic Gauge Dashboard */
     .academic-gauge-box {
       background: linear-gradient(145deg, #070d19 0%, #0c1424 100%);
       border: 1px solid #1e3a5f;
-      border-radius: 16px;
-      padding: 18px;
+      border-radius: 14px;
+      padding: 12px;
       margin-top: 15px;
       position: relative;
       box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05);
+    }
+    @media (min-width: 768px) {
+      .academic-gauge-box {
+        border-radius: 16px;
+        padding: 18px;
+      }
     }
     .academic-header-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
     .academic-gauge-circle {
       position: relative;
-      width: 130px;
-      height: 70px;
-      margin: 5px auto 14px auto;
+      width: 120px;
+      height: 65px;
+      margin: 5px auto 10px auto;
       overflow: hidden;
       display: flex;
       justify-content: center;
     }
     .gauge-semi {
-      width: 120px;
-      height: 120px;
-      border: 8px solid #132238;
+      width: 110px;
+      height: 110px;
+      border: 7px solid #132238;
       border-top-color: var(--accent-cyan);
       border-right-color: var(--accent-green);
       border-radius: 50%;
@@ -448,7 +587,7 @@
       bottom: 0;
       left: 50%;
       width: 3px;
-      height: 48px;
+      height: 44px;
       background: #ffffff;
       transform-origin: bottom center;
       transform: rotate(32deg);
@@ -467,7 +606,7 @@
       bottom: 0;
       left: 50%;
       width: 3px;
-      height: 48px;
+      height: 44px;
       background: #ffffff;
       transform-origin: bottom center;
       transform: rotate(18deg);
@@ -484,9 +623,9 @@
     .edu-progress-track {
       background: #091322;
       border-radius: 50px;
-      height: 9px;
+      height: 8px;
       overflow: hidden;
-      margin: 10px 0;
+      margin: 8px 0;
       border: 1px solid #1e3a5f;
     }
     .edu-progress-fill {
@@ -504,13 +643,13 @@
 
     .pulse-indicator {
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background-color: var(--accent-green);
       box-shadow: 0 0 8px var(--accent-green);
       animation: pulseDot 1.4s infinite;
-      margin-right: 6px;
+      margin-right: 4px;
     }
     @keyframes pulseDot {
       0%, 100% { transform: scale(0.9); opacity: 0.6; }
@@ -521,11 +660,16 @@
       background-color: var(--accent);
       color: #060911;
       font-weight: 700;
-      padding: 12px 28px;
+      padding: 10px 24px;
       border-radius: 50px;
       border: none;
       box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
       transition: all 0.25s ease;
+    }
+    @media (min-width: 768px) {
+      .btn-action-accent {
+        padding: 12px 28px;
+      }
     }
     .btn-action-accent:hover {
       background-color: #0284c7;
@@ -536,10 +680,15 @@
     .btn-action-outline {
       border: 1px solid #334155;
       color: #ffffff;
-      padding: 12px 26px;
+      padding: 10px 22px;
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.25s ease;
+    }
+    @media (min-width: 768px) {
+      .btn-action-outline {
+        padding: 12px 26px;
+      }
     }
     .btn-action-outline:hover {
       border-color: var(--accent);
@@ -548,9 +697,9 @@
       transform: translateY(-2px);
     }
     .section-header {
-      font-size: 1.9rem;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
       font-weight: 800;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       letter-spacing: -0.5px;
     }
   </style>
@@ -580,7 +729,7 @@
 
   <!-- Hero Section -->
   <section id="hero" class="py-5 mt-5 text-center">
-    <div class="container py-5">
+    <div class="container py-4 py-md-5">
       <h1 class="display-4 fw-bold mb-2">Siva Vivek Reddy</h1>
       <div class="typing-container mb-3">
         <span>I am a </span><span id="typewriter" class="typing-text"></span>
@@ -589,7 +738,7 @@
         Computer Science postgraduate backed by hands-on experience in Machine Learning pipelines, Full-Stack web architecture, and Cybersecurity auditing.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a href="siva_vivek_reddy.pdf" download="Siva_Vivek_Reddy_Resume.pdf" class="btn btn-action-accent d-flex align-items-center gap-2">
+        <a href="resume.pdf" download="Siva_Vivek_Reddy_Resume.pdf" class="btn btn-action-accent d-flex align-items-center gap-2">
           <i class="fas fa-file-download"></i> Download Resume
         </a>
         <a href="#contact" class="btn btn-action-outline d-flex align-items-center gap-2">
@@ -600,7 +749,7 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-5">
+  <section id="about" class="py-4 py-md-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-user-circle me-2"></i> About Me</h2>
       <div class="custom-card">
@@ -615,7 +764,7 @@
   </section>
 
   <!-- Technical Skills Section -->
-  <section id="skills" class="py-5">
+  <section id="skills" class="py-4 py-md-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-tools me-2"></i> Technical Skills</h2>
       <div class="row g-4">
@@ -659,7 +808,7 @@
   </section>
 
   <!-- Internships Section -->
-  <section id="experience" class="py-5">
+  <section id="experience" class="py-4 py-md-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-briefcase me-2"></i> Internships</h2>
       <div class="timeline-wrapper">
@@ -672,7 +821,7 @@
                 <h4 class="fw-bold text-white mb-1">AI & Generative AI Intern</h4>
                 <h6 class="text-accent mb-2">YBI Foundation</h6>
               </div>
-              <span class="badge bg-dark border border-secondary px-3 py-2 text-accent">
+              <span class="badge bg-dark border border-secondary px-2 px-md-3 py-2 text-accent">
                 <span class="pulse-indicator"></span>AI / GenAI Pipeline
               </span>
             </div>
@@ -683,9 +832,9 @@
               <li>Explored Generative AI tools and integrated prompt engineering methods for practical real-world workflows.</li>
             </ul>
 
-            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
+            <!-- 100% Auto-Adjust Horizontal Diagram -->
             <div class="visual-diagram-box">
-              <div class="text-center mb-3">
+              <div class="text-center mb-2 mb-md-3">
                 <span class="top-capsule-badge">
                   <i class="fas fa-brain me-1"></i> AI, ML & Generative AI Workflow Pipeline
                 </span>
@@ -694,42 +843,42 @@
               <div class="diagram-flow-row">
                 <!-- Node 1: Data Pipeline -->
                 <div style="flex: 0 0 28%;">
-                  <div class="diagram-rect diagram-rect-cyan py-3">
-                    <div class="text-accent mb-1 fs-5"><i class="fas fa-filter"></i></div>
-                    <div class="fw-bold text-white fs-6">Data Pipeline</div>
-                    <div class="diagram-item-row mt-1">Clean & Scale</div>
+                  <div class="diagram-rect diagram-rect-cyan">
+                    <div class="diagram-icon text-accent"><i class="fas fa-filter"></i></div>
+                    <div class="diagram-title">Data Pipeline</div>
+                    <div class="diagram-item-row">Clean & Scale</div>
                   </div>
                 </div>
 
                 <div class="live-flow-line"></div>
 
                 <!-- Node 2: ML Engine -->
-                <div style="flex: 0 0 35%;">
-                  <div class="diagram-rect diagram-rect-purple py-3">
-                    <div class="text-purple mb-1 fs-5"><i class="fab fa-python"></i></div>
-                    <div class="fw-bold text-white fs-6">ML Engine</div>
-                    <div class="diagram-item-row mt-1">Predictive Models</div>
+                <div style="flex: 0 0 34%;">
+                  <div class="diagram-rect diagram-rect-purple">
+                    <div class="diagram-icon text-purple"><i class="fab fa-python"></i></div>
+                    <div class="diagram-title">ML Engine</div>
+                    <div class="diagram-item-row">Predictive Models</div>
                   </div>
                 </div>
 
                 <div class="live-flow-line"></div>
 
                 <!-- Node 3: GenAI & Prompts + Evaluation -->
-                <div style="flex: 0 0 30%;">
-                  <div class="d-flex flex-column gap-2">
-                    <div class="diagram-rect diagram-rect-cyan py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-robot text-accent me-1"></i> GenAI & Prompts</div>
-                      <div class="diagram-item-row" style="font-size: 0.7rem;">Prompt Engineering</div>
+                <div style="flex: 0 0 31%;">
+                  <div class="d-flex flex-column gap-1 gap-md-2">
+                    <div class="diagram-rect diagram-rect-cyan" style="padding: 4px 3px;">
+                      <div class="diagram-title" style="color:var(--accent);"><i class="fas fa-robot me-1"></i>GenAI</div>
+                      <div class="diagram-item-row">Prompt Eng.</div>
                     </div>
-                    <div class="diagram-rect diagram-rect-green py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-chart-line text-green me-1"></i> Model Evaluation</div>
-                      <div class="diagram-item-row" style="font-size: 0.7rem;">Performance QA</div>
+                    <div class="diagram-rect diagram-rect-green" style="padding: 4px 3px;">
+                      <div class="diagram-title" style="color:var(--accent-green);"><i class="fas fa-chart-line me-1"></i>Model Eval</div>
+                      <div class="diagram-item-row">Perf. QA</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="diag-status-pill mt-3">
+              <div class="diag-status-pill">
                 <i class="fas fa-bolt text-accent me-1"></i> Predictive Machine Learning & Prompt Optimization Active
               </div>
             </div>
@@ -751,7 +900,7 @@
                 <h4 class="fw-bold text-white mb-1">Cyber Security Intern</h4>
                 <h6 class="text-accent mb-2">Texial Cyber Security</h6>
               </div>
-              <span class="badge bg-dark border border-secondary px-3 py-2 text-green">
+              <span class="badge bg-dark border border-secondary px-2 px-md-3 py-2 text-green">
                 <span class="pulse-indicator"></span>Security Audit Role
               </span>
             </div>
@@ -768,15 +917,15 @@
                 <span class="term-dot term-red"></span>
                 <span class="term-dot term-yellow"></span>
                 <span class="term-dot term-green"></span>
-                <span class="text-cyan fw-bold ms-2" style="font-size:0.75rem; color:#00e5ff; font-family:monospace;">
+                <span class="text-cyan fw-bold ms-1 ms-md-2" style="font-size:clamp(0.62rem, 2vw, 0.75rem); color:#00e5ff; font-family:monospace;">
                   LIVE SESSION: AUDIT_SECURITY_ENGINE
                 </span>
               </div>
 
-              <div class="row g-3">
+              <div class="row g-2 g-md-3">
                 <div class="col-md-7 col-12">
                   <div class="sec-terminal-left">
-                    <div class="text-accent mb-2 fw-bold" style="font-size:0.76rem;"><i class="fas fa-bolt text-accent me-1"></i> Security Terminal - Execution Engine</div>
+                    <div class="text-accent mb-1 fw-bold"><i class="fas fa-bolt text-accent me-1"></i> Security Terminal - Execution Engine</div>
                     <div class="text-success">&gt; nmap -sV -sC -T4 target_subnet</div>
                     <div class="text-muted small">&gt; status: [PORT 80/443 OPEN]</div>
                     <div class="text-warning mt-1">&gt; msfconsole -q -x "use exploit/handler"</div>
@@ -790,25 +939,25 @@
                 <div class="col-md-5 col-12">
                   <div class="sec-diag-right">
                     <div>
-                      <div class="text-purple fw-bold mb-2" style="font-size:0.74rem;">SYSTEM DIAGNOSTICS</div>
+                      <div class="text-purple fw-bold mb-1" style="font-size:clamp(0.62rem, 2vw, 0.74rem);">SYSTEM DIAGNOSTICS</div>
                       
-                      <small class="text-muted d-block mb-1" style="font-size:0.68rem;">Remote Session Stability</small>
-                      <div class="progress mb-2" style="height:6px; background:#0f1d30;">
+                      <small class="text-muted d-block mb-1" style="font-size:clamp(0.58rem, 1.8vw, 0.68rem);">Remote Session Stability</small>
+                      <div class="progress mb-2" style="height:5px; background:#0f1d30;">
                         <div class="progress-bar bg-success" style="width: 88%;"></div>
                       </div>
 
                       <div class="d-flex justify-content-between align-items-center mb-1">
-                        <small class="text-muted" style="font-size:0.68rem;">Network Latency</small>
-                        <small class="text-cyan fw-bold" style="color:#00e5ff; font-size:0.68rem;">12ms</small>
+                        <small class="text-muted" style="font-size:clamp(0.58rem, 1.8vw, 0.68rem);">Network Latency</small>
+                        <small class="text-cyan fw-bold" style="color:#00e5ff; font-size:clamp(0.58rem, 1.8vw, 0.68rem);">12ms</small>
                       </div>
-                      <div class="progress mb-3" style="height:6px; background:#0f1d30;">
+                      <div class="progress mb-2 mb-md-3" style="height:5px; background:#0f1d30;">
                         <div class="progress-bar bg-info" style="width: 45%;"></div>
                       </div>
                     </div>
 
                     <div class="sec-status-box">
-                      <div class="text-green fw-bold" style="font-size:0.74rem;"><i class="fas fa-check text-green me-1"></i> AUDIT FIX ACTIVE</div>
-                      <small class="text-muted" style="font-size:0.65rem;">System Hardening Applied</small>
+                      <div class="text-green fw-bold" style="font-size:clamp(0.62rem, 2vw, 0.74rem);"><i class="fas fa-check text-green me-1"></i> AUDIT FIX ACTIVE</div>
+                      <small class="text-muted" style="font-size:clamp(0.55rem, 1.6vw, 0.65rem);">System Hardening Applied</small>
                     </div>
                   </div>
                 </div>
@@ -817,8 +966,8 @@
               <div class="sec-hub-bar">
                 <span class="pulse-indicator"></span>
                 <div>
-                  <div class="text-white fw-bold" style="font-size:0.76rem;">Security Audit & Penetration Testing Hub</div>
-                  <small class="text-muted" style="font-size:0.68rem;">Vulnerability Scans • Nmap Mapping • Metasploit Exploits • SQLi Patching</small>
+                  <div class="text-white fw-bold" style="font-size:clamp(0.65rem, 2vw, 0.76rem);">Security Audit & Penetration Testing Hub</div>
+                  <small class="text-muted" style="font-size:clamp(0.55rem, 1.6vw, 0.68rem);">Vulnerability Scans • Nmap Mapping • Metasploit Exploits • SQLi Patching</small>
                 </div>
               </div>
             </div>
@@ -837,10 +986,10 @@
   </section>
 
   <!-- Certifications Section -->
-  <section id="certifications" class="py-5">
+  <section id="certifications" class="py-4 py-md-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-certificate me-2"></i> Certifications</h2>
-      <div class="row g-4">
+      <div class="row g-3 g-md-4">
         <div class="col-md-6 col-lg-4">
           <div class="custom-card h-100">
             <div class="d-flex align-items-center gap-3 mb-2">
@@ -918,7 +1067,7 @@
   </section>
 
   <!-- Featured Projects Section -->
-  <section id="projects" class="py-5">
+  <section id="projects" class="py-4 py-md-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-code-branch me-2"></i> Featured Projects</h2>
       <div class="timeline-wrapper">
@@ -933,9 +1082,9 @@
               <li>Integrated quantum-inspired routing algorithms, graph representations (NetworkX), and predictive machine learning models to maximize routing efficiency.</li>
             </ul>
 
-            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
+            <!-- 100% Auto-Adjust Horizontal Diagram -->
             <div class="visual-diagram-box">
-              <div class="text-center mb-3">
+              <div class="text-center mb-2 mb-md-3">
                 <span class="top-capsule-badge">
                   <i class="fas fa-atom me-1"></i> Quantum-Enhanced Routing Pipeline
                 </span>
@@ -944,12 +1093,12 @@
               <div class="diagram-flow-row">
                 <!-- 1. Input: Traffic Data -->
                 <div style="flex: 0 0 28%;">
-                  <div class="diagram-rect diagram-rect-cyan py-3">
-                    <div class="fw-bold text-white fs-6 mb-1">Traffic Data</div>
+                  <div class="diagram-rect diagram-rect-cyan">
+                    <div class="diagram-title">Traffic Data</div>
                     <div class="d-flex justify-content-center gap-1 my-1">
-                      <span style="display:inline-block; width:2px; height:14px; background:#10b981;"></span>
-                      <span style="display:inline-block; width:2px; height:20px; background:#ef4444;"></span>
-                      <span style="display:inline-block; width:2px; height:14px; background:#10b981;"></span>
+                      <span style="display:inline-block; width:2px; height:10px; background:#10b981;"></span>
+                      <span style="display:inline-block; width:2px; height:14px; background:#ef4444;"></span>
+                      <span style="display:inline-block; width:2px; height:10px; background:#10b981;"></span>
                     </div>
                     <div class="diagram-item-row">TomTom & GPS</div>
                   </div>
@@ -958,32 +1107,32 @@
                 <div class="live-flow-line"></div>
 
                 <!-- 2. Core: Qiskit -->
-                <div style="flex: 0 0 35%;">
-                  <div class="diagram-rect diagram-rect-purple py-3">
-                    <div class="text-purple mb-1 fs-5"><i class="fas fa-atom"></i></div>
-                    <div class="fw-bold text-white fs-6">Qiskit</div>
-                    <div class="diagram-item-row mt-1">DTQW Walker</div>
+                <div style="flex: 0 0 34%;">
+                  <div class="diagram-rect diagram-rect-purple">
+                    <div class="diagram-icon text-purple"><i class="fas fa-atom"></i></div>
+                    <div class="diagram-title">Qiskit</div>
+                    <div class="diagram-item-row">DTQW Walker</div>
                   </div>
                 </div>
 
                 <div class="live-flow-line"></div>
 
                 <!-- 3. Output: Interactive Map UI & Clearance -->
-                <div style="flex: 0 0 30%;">
-                  <div class="d-flex flex-column gap-2">
-                    <div class="diagram-rect diagram-rect-cyan py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-map-marked-alt text-accent me-1"></i> Interactive Map UI</div>
-                      <div class="diagram-item-row" style="font-size: 0.7rem;">Live Multi-Route Overlay</div>
+                <div style="flex: 0 0 31%;">
+                  <div class="d-flex flex-column gap-1 gap-md-2">
+                    <div class="diagram-rect diagram-rect-cyan" style="padding: 4px 3px;">
+                      <div class="diagram-title" style="color:var(--accent);"><i class="fas fa-map-marked-alt me-1"></i>Map UI</div>
+                      <div class="diagram-item-row">Route Overlay</div>
                     </div>
-                    <div class="diagram-rect diagram-rect-green py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-clock text-green me-1"></i> Clearance & ETA</div>
-                      <div class="diagram-item-row" style="font-size: 0.7rem;">Predictive Low-Delay Route</div>
+                    <div class="diagram-rect diagram-rect-green" style="padding: 4px 3px;">
+                      <div class="diagram-title" style="color:var(--accent-green);"><i class="fas fa-clock me-1"></i>ETA</div>
+                      <div class="diagram-item-row">Low Delay</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="diag-status-pill mt-3">
+              <div class="diag-status-pill">
                 <i class="fas fa-bolt text-accent me-1"></i> End-User Real-Time Navigation & Congestion Minimization
               </div>
             </div>
@@ -1007,13 +1156,13 @@
               <li>Preserved structural textures while yielding visually sharp and artifact-free high-resolution outputs.</li>
             </ul>
 
-            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
+            <!-- 100% Auto-Adjust Horizontal Diagram -->
             <div class="visual-diagram-box">
               <div class="diagram-flow-row">
                 <!-- 1. Input -->
                 <div style="flex: 0 0 28%;">
-                  <div class="diagram-rect diagram-rect-cyan py-3">
-                    <div class="fw-bold text-accent fs-6 mb-1"><i class="fas fa-image me-1"></i> Input</div>
+                  <div class="diagram-rect diagram-rect-cyan">
+                    <div class="diagram-title" style="color:var(--accent);"><i class="fas fa-image me-1"></i>Input</div>
                     <div class="diagram-item-row">Gaussian Noise</div>
                   </div>
                 </div>
@@ -1022,8 +1171,8 @@
 
                 <!-- 2. Neural Net -->
                 <div style="flex: 0 0 35%;">
-                  <div class="diagram-rect diagram-rect-purple py-3">
-                    <div class="fw-bold text-purple fs-6 mb-1"><i class="fas fa-network-wired me-1"></i> Neural Net</div>
+                  <div class="diagram-rect diagram-rect-purple">
+                    <div class="diagram-title" style="color:var(--accent-purple);"><i class="fas fa-network-wired me-1"></i>Neural Net</div>
                     <div class="diagram-item-row">Conv2D Layers</div>
                   </div>
                 </div>
@@ -1032,14 +1181,14 @@
 
                 <!-- 3. Output -->
                 <div style="flex: 0 0 28%;">
-                  <div class="diagram-rect diagram-rect-green py-3">
-                    <div class="fw-bold text-green fs-6 mb-1"><i class="fas fa-check-circle me-1"></i> Output</div>
+                  <div class="diagram-rect diagram-rect-green">
+                    <div class="diagram-title" style="color:var(--accent-green);"><i class="fas fa-check-circle me-1"></i>Output</div>
                     <div class="diagram-item-row">High PSNR</div>
                   </div>
                 </div>
               </div>
 
-              <div class="diag-status-pill mt-3">
+              <div class="diag-status-pill">
                 <i class="fas fa-paint-brush text-accent me-1"></i> Deep Noise Suppression Architecture
               </div>
             </div>
@@ -1062,16 +1211,16 @@
               <li>Implemented front-end interfaces to facilitate fast donor discovery and nearby blood center matching.</li>
             </ul>
 
-            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
+            <!-- 100% Auto-Adjust Horizontal Diagram -->
             <div class="visual-diagram-box">
               <div class="diagram-flow-row">
                 <!-- Left: Store Frontend -->
-                <div style="flex: 0 0 45%;">
-                  <div class="diagram-rect diagram-rect-cyan text-start p-3">
-                    <div class="fw-bold text-accent fs-6 mb-2"><i class="fas fa-desktop me-1"></i> Store Frontend</div>
-                    <div class="diagram-item-row">Product Catalog</div>
-                    <div class="diagram-item-row">User Auth</div>
-                    <div class="diagram-item-row">Cart / Orders</div>
+                <div style="flex: 0 0 46%;">
+                  <div class="diagram-rect diagram-rect-cyan text-start" style="padding: 6px 8px;">
+                    <div class="diagram-title" style="color:var(--accent);"><i class="fas fa-desktop me-1"></i>Frontend</div>
+                    <div class="diagram-item-row">• Product Catalog</div>
+                    <div class="diagram-item-row">• User Auth</div>
+                    <div class="diagram-item-row">• Orders/Cart</div>
                   </div>
                 </div>
 
@@ -1079,17 +1228,17 @@
                 <div class="live-flow-line"></div>
 
                 <!-- Right: SQL Relational DB -->
-                <div style="flex: 0 0 45%;">
-                  <div class="diagram-rect diagram-rect-green text-start p-3">
-                    <div class="fw-bold text-green fs-6 mb-2"><i class="fas fa-database me-1"></i> SQL Relational DB</div>
-                    <div class="diagram-item-row">users (id PK, email, pwd)</div>
-                    <div class="diagram-item-row">products (id PK, price)</div>
-                    <div class="diagram-item-row">orders (id PK, user_id FK)</div>
+                <div style="flex: 0 0 46%;">
+                  <div class="diagram-rect diagram-rect-green text-start" style="padding: 6px 8px;">
+                    <div class="diagram-title" style="color:var(--accent-green);"><i class="fas fa-database me-1"></i>SQL Relational DB</div>
+                    <div class="diagram-item-row">• users (id PK)</div>
+                    <div class="diagram-item-row">• products (id PK)</div>
+                    <div class="diagram-item-row">• orders (user_id FK)</div>
                   </div>
                 </div>
               </div>
 
-              <div class="diag-status-pill mt-3">
+              <div class="diag-status-pill">
                 <i class="fas fa-bolt text-accent me-1"></i> Optimized Foreign Key Joins & Queries
               </div>
             </div>
@@ -1108,7 +1257,7 @@
   </section>
 
   <!-- Education Section -->
-  <section id="education" class="py-5">
+  <section id="education" class="py-4 py-md-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-graduation-cap me-2"></i> Education</h2>
       <div class="timeline-wrapper">
@@ -1121,7 +1270,7 @@
                 <h4 class="fw-bold text-white mb-1">M.Tech in Computer Science and Engineering</h4>
                 <h6 class="text-accent mb-1">Sri Venkateswara University, Tirupati</h6>
               </div>
-              <span class="badge bg-dark border border-secondary px-3 py-2 text-accent">2024 – 2026</span>
+              <span class="badge bg-dark border border-secondary px-2 px-md-3 py-2 text-accent">2024 – 2026</span>
             </div>
 
             <ul class="timeline-list">
@@ -1175,7 +1324,7 @@
                 <h4 class="fw-bold text-white mb-1">B.Tech in Computer Science and Systems Engineering</h4>
                 <h6 class="text-accent mb-1">Sree Vidyanikethan Engineering College, Tirupati</h6>
               </div>
-              <span class="badge bg-dark border border-secondary px-3 py-2 text-accent">2019 – 2023</span>
+              <span class="badge bg-dark border border-secondary px-2 px-md-3 py-2 text-accent">2019 – 2023</span>
             </div>
 
             <ul class="timeline-list">
@@ -1226,7 +1375,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-5 text-center">
+  <section id="contact" class="py-4 py-md-5 text-center">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-envelope-open-text me-2"></i> Get In Touch</h2>
 

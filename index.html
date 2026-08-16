@@ -206,27 +206,46 @@
       box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
     }
 
-    /* Diagrams & Rectangles */
+    /* Responsive Diagram Layouts */
     .visual-diagram-box {
       background-color: var(--bg-inner);
       border: 1px solid #1e293b;
       border-radius: 16px;
-      padding: 18px;
+      padding: 16px;
       margin: 1.2rem 0 0.5rem 0;
+      position: relative;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #1e3a5f #070d19;
+    }
+    .visual-diagram-box::-webkit-scrollbar {
+      height: 5px;
+    }
+    .visual-diagram-box::-webkit-scrollbar-thumb {
+      background: #1e3a5f;
+      border-radius: 4px;
+    }
+
+    .diagram-flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 540px;
+      gap: 8px;
       position: relative;
     }
 
     .diagram-rect {
       background-color: #070e1b;
       border-radius: 10px;
-      padding: 12px 14px;
+      padding: 10px 12px;
       text-align: center;
       transition: all 0.25s ease;
       cursor: pointer;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      box-sizing: border-box;
     }
     .diagram-rect:hover {
       transform: translateY(-3px);
@@ -252,10 +271,11 @@
     }
 
     .diagram-item-row {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
       margin: 2px 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      white-space: nowrap;
     }
 
     .top-capsule-badge {
@@ -264,10 +284,11 @@
       color: var(--accent-green);
       font-size: 0.8rem;
       font-weight: 600;
-      padding: 6px 20px;
+      padding: 5px 18px;
       border-radius: 50px;
       display: inline-block;
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .top-capsule-badge:hover {
       background: rgba(16, 185, 129, 0.18);
@@ -285,8 +306,10 @@
       text-align: center;
       display: block;
       width: 100%;
+      min-width: 540px;
       transition: all 0.25s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
     .diag-status-pill:hover {
       background-color: #0e1e36;
@@ -295,8 +318,11 @@
       transform: translateY(-2px);
     }
 
+    /* Live Animated Dashed Flow Connector */
     .live-flow-line {
       height: 3px;
+      flex: 1;
+      min-width: 25px;
       background: repeating-linear-gradient(
         90deg,
         var(--accent) 0px,
@@ -534,7 +560,7 @@
   <!-- Sticky Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#hero">Siva Vivek Reddy</a>
+      <a class="navbar-brand" href="#hero">Siva Vivek Reddy.</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
         <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
       </button>
@@ -542,7 +568,7 @@
         <ul class="navbar-nav gap-2">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Internships</a></li>
           <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
@@ -563,7 +589,7 @@
         Computer Science postgraduate backed by hands-on experience in Machine Learning pipelines, Full-Stack web architecture, and Cybersecurity auditing.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a href="resume.pdf" download="Siva_Vivek_Reddy_Resume.pdf" class="btn btn-action-accent d-flex align-items-center gap-2">
+        <a href="siva_vivek_reddy.pdf" download="Siva_Vivek_Reddy_Resume.pdf" class="btn btn-action-accent d-flex align-items-center gap-2">
           <i class="fas fa-file-download"></i> Download Resume
         </a>
         <a href="#contact" class="btn btn-action-outline d-flex align-items-center gap-2">
@@ -576,13 +602,13 @@
   <!-- About Section -->
   <section id="about" class="py-5">
     <div class="container">
-      <h2 class="section-header text-accent"><i class="fas fa-user-circle me-2"></i> About</h2>
+      <h2 class="section-header text-accent"><i class="fas fa-user-circle me-2"></i> About Me</h2>
       <div class="custom-card">
         <p class="fs-5 mb-3 text-white">
           I am a detail-oriented Computer Science postgraduate with a strong technical foundation spanning <strong class="text-accent">Python, SQL, Data Structures, Web Development, Machine Learning, and Cybersecurity</strong>.
         </p>
         <p class="text-muted mb-0">
-         From developing quantum-enhanced traffic optimization models to architecting relational web platforms and identifying system vulnerabilities, I focus on building scalable, data-driven software solutions. Driven by a passion for solving real-world challenges and continuously mastering new technologies, I am eager to apply my problem-solving skills to high-impact software engineering roles.
+          From developing quantum-enhanced traffic optimization models to architecting relational web platforms and identifying system vulnerabilities, I focus on building scalable, data-driven software solutions. Driven by a passion for solving real-world challenges and continuously mastering new technologies, I am eager to apply my problem-solving skills to high-impact software engineering roles.
         </p>
       </div>
     </div>
@@ -632,7 +658,7 @@
     </div>
   </section>
 
-  <!-- Work Experience Section -->
+  <!-- Internships Section -->
   <section id="experience" class="py-5">
     <div class="container">
       <h2 class="section-header text-accent"><i class="fas fa-briefcase me-2"></i> Internships</h2>
@@ -657,7 +683,7 @@
               <li>Explored Generative AI tools and integrated prompt engineering methods for practical real-world workflows.</li>
             </ul>
 
-            <!-- Visual Diagram -->
+            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
             <div class="visual-diagram-box">
               <div class="text-center mb-3">
                 <span class="top-capsule-badge">
@@ -665,8 +691,9 @@
                 </span>
               </div>
               
-              <div class="row g-2 align-items-center position-relative">
-                <div class="col-md-3 col-12 mb-2 mb-md-0">
+              <div class="diagram-flow-row">
+                <!-- Node 1: Data Pipeline -->
+                <div style="flex: 0 0 28%;">
                   <div class="diagram-rect diagram-rect-cyan py-3">
                     <div class="text-accent mb-1 fs-5"><i class="fas fa-filter"></i></div>
                     <div class="fw-bold text-white fs-6">Data Pipeline</div>
@@ -674,9 +701,10 @@
                   </div>
                 </div>
 
-                <div class="col-md-1 d-none d-md-block px-0"><div class="live-flow-line"></div></div>
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-4 col-12 mb-2 mb-md-0">
+                <!-- Node 2: ML Engine -->
+                <div style="flex: 0 0 35%;">
                   <div class="diagram-rect diagram-rect-purple py-3">
                     <div class="text-purple mb-1 fs-5"><i class="fab fa-python"></i></div>
                     <div class="fw-bold text-white fs-6">ML Engine</div>
@@ -684,17 +712,18 @@
                   </div>
                 </div>
 
-                <div class="col-md-1 d-none d-md-block px-0"><div class="live-flow-line"></div></div>
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-3 col-12">
+                <!-- Node 3: GenAI & Prompts + Evaluation -->
+                <div style="flex: 0 0 30%;">
                   <div class="d-flex flex-column gap-2">
                     <div class="diagram-rect diagram-rect-cyan py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.82rem;"><i class="fas fa-robot text-accent me-1"></i> GenAI & Prompts</div>
-                      <div class="diagram-item-row" style="font-size: 0.72rem;">Prompt Engineering</div>
+                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-robot text-accent me-1"></i> GenAI & Prompts</div>
+                      <div class="diagram-item-row" style="font-size: 0.7rem;">Prompt Engineering</div>
                     </div>
                     <div class="diagram-rect diagram-rect-green py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.82rem;"><i class="fas fa-chart-line text-green me-1"></i> Model Evaluation</div>
-                      <div class="diagram-item-row" style="font-size: 0.72rem;">Performance QA</div>
+                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-chart-line text-green me-1"></i> Model Evaluation</div>
+                      <div class="diagram-item-row" style="font-size: 0.7rem;">Performance QA</div>
                     </div>
                   </div>
                 </div>
@@ -733,9 +762,8 @@
               <li>Identified critical web vulnerabilities including SQL Injections and proposed remediation patches.</li>
             </ul>
 
-            <!-- Security Console & Live Diagnostics with Blinking Terminal Cursor -->
+            <!-- Security Console & Live Diagnostics -->
             <div class="sec-console-container my-3">
-              <!-- Window Header -->
               <div class="sec-header-bar">
                 <span class="term-dot term-red"></span>
                 <span class="term-dot term-yellow"></span>
@@ -745,9 +773,7 @@
                 </span>
               </div>
 
-              <!-- Main Dual Columns -->
               <div class="row g-3">
-                <!-- Left: Terminal Code Execution with Blinking Block Cursor -->
                 <div class="col-md-7 col-12">
                   <div class="sec-terminal-left">
                     <div class="text-accent mb-2 fw-bold" style="font-size:0.76rem;"><i class="fas fa-bolt text-accent me-1"></i> Security Terminal - Execution Engine</div>
@@ -761,7 +787,6 @@
                   </div>
                 </div>
 
-                <!-- Right: Diagnostics Status Panel -->
                 <div class="col-md-5 col-12">
                   <div class="sec-diag-right">
                     <div>
@@ -789,7 +814,6 @@
                 </div>
               </div>
 
-              <!-- Bottom Hub Footer -->
               <div class="sec-hub-bar">
                 <span class="pulse-indicator"></span>
                 <div>
@@ -909,7 +933,7 @@
               <li>Integrated quantum-inspired routing algorithms, graph representations (NetworkX), and predictive machine learning models to maximize routing efficiency.</li>
             </ul>
 
-            <!-- Visual Diagram -->
+            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
             <div class="visual-diagram-box">
               <div class="text-center mb-3">
                 <span class="top-capsule-badge">
@@ -917,8 +941,9 @@
                 </span>
               </div>
 
-              <div class="row g-2 align-items-center position-relative">
-                <div class="col-md-3 col-12 mb-2 mb-md-0">
+              <div class="diagram-flow-row">
+                <!-- 1. Input: Traffic Data -->
+                <div style="flex: 0 0 28%;">
                   <div class="diagram-rect diagram-rect-cyan py-3">
                     <div class="fw-bold text-white fs-6 mb-1">Traffic Data</div>
                     <div class="d-flex justify-content-center gap-1 my-1">
@@ -930,9 +955,10 @@
                   </div>
                 </div>
 
-                <div class="col-md-1 d-none d-md-block px-0"><div class="live-flow-line"></div></div>
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-4 col-12 mb-2 mb-md-0">
+                <!-- 2. Core: Qiskit -->
+                <div style="flex: 0 0 35%;">
                   <div class="diagram-rect diagram-rect-purple py-3">
                     <div class="text-purple mb-1 fs-5"><i class="fas fa-atom"></i></div>
                     <div class="fw-bold text-white fs-6">Qiskit</div>
@@ -940,17 +966,18 @@
                   </div>
                 </div>
 
-                <div class="col-md-1 d-none d-md-block px-0"><div class="live-flow-line"></div></div>
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-3 col-12">
+                <!-- 3. Output: Interactive Map UI & Clearance -->
+                <div style="flex: 0 0 30%;">
                   <div class="d-flex flex-column gap-2">
                     <div class="diagram-rect diagram-rect-cyan py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.82rem;"><i class="fas fa-map-marked-alt text-accent me-1"></i> Interactive Map UI</div>
-                      <div class="diagram-item-row" style="font-size: 0.72rem;">Live Multi-Route Overlay</div>
+                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-map-marked-alt text-accent me-1"></i> Interactive Map UI</div>
+                      <div class="diagram-item-row" style="font-size: 0.7rem;">Live Multi-Route Overlay</div>
                     </div>
                     <div class="diagram-rect diagram-rect-green py-2">
-                      <div class="fw-bold text-white" style="font-size: 0.82rem;"><i class="fas fa-clock text-green me-1"></i> Clearance & ETA</div>
-                      <div class="diagram-item-row" style="font-size: 0.72rem;">Predictive Low-Delay Route</div>
+                      <div class="fw-bold text-white" style="font-size: 0.8rem;"><i class="fas fa-clock text-green me-1"></i> Clearance & ETA</div>
+                      <div class="diagram-item-row" style="font-size: 0.7rem;">Predictive Low-Delay Route</div>
                     </div>
                   </div>
                 </div>
@@ -980,27 +1007,31 @@
               <li>Preserved structural textures while yielding visually sharp and artifact-free high-resolution outputs.</li>
             </ul>
 
+            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
             <div class="visual-diagram-box">
-              <div class="row g-2 align-items-center position-relative">
-                <div class="col-md-3 col-12 mb-2 mb-md-0">
+              <div class="diagram-flow-row">
+                <!-- 1. Input -->
+                <div style="flex: 0 0 28%;">
                   <div class="diagram-rect diagram-rect-cyan py-3">
                     <div class="fw-bold text-accent fs-6 mb-1"><i class="fas fa-image me-1"></i> Input</div>
                     <div class="diagram-item-row">Gaussian Noise</div>
                   </div>
                 </div>
 
-                <div class="col-md-1 d-none d-md-block px-0"><div class="live-flow-line"></div></div>
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-4 col-12 mb-2 mb-md-0">
+                <!-- 2. Neural Net -->
+                <div style="flex: 0 0 35%;">
                   <div class="diagram-rect diagram-rect-purple py-3">
                     <div class="fw-bold text-purple fs-6 mb-1"><i class="fas fa-network-wired me-1"></i> Neural Net</div>
                     <div class="diagram-item-row">Conv2D Layers</div>
                   </div>
                 </div>
 
-                <div class="col-md-1 d-none d-md-block px-0"><div class="live-flow-line"></div></div>
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-3 col-12">
+                <!-- 3. Output -->
+                <div style="flex: 0 0 28%;">
                   <div class="diagram-rect diagram-rect-green py-3">
                     <div class="fw-bold text-green fs-6 mb-1"><i class="fas fa-check-circle me-1"></i> Output</div>
                     <div class="diagram-item-row">High PSNR</div>
@@ -1031,9 +1062,11 @@
               <li>Implemented front-end interfaces to facilitate fast donor discovery and nearby blood center matching.</li>
             </ul>
 
+            <!-- Horizontal Desktop Pipeline Flow (Preserved on Mobile) -->
             <div class="visual-diagram-box">
-              <div class="row g-2 align-items-center">
-                <div class="col-md-5 col-12 mb-2 mb-md-0">
+              <div class="diagram-flow-row">
+                <!-- Left: Store Frontend -->
+                <div style="flex: 0 0 45%;">
                   <div class="diagram-rect diagram-rect-cyan text-start p-3">
                     <div class="fw-bold text-accent fs-6 mb-2"><i class="fas fa-desktop me-1"></i> Store Frontend</div>
                     <div class="diagram-item-row">Product Catalog</div>
@@ -1042,11 +1075,11 @@
                   </div>
                 </div>
 
-                <div class="col-md-2 d-none d-md-block text-center px-0">
-                  <div class="live-flow-line"></div>
-                </div>
+                <!-- Flow Connector -->
+                <div class="live-flow-line"></div>
 
-                <div class="col-md-5 col-12">
+                <!-- Right: SQL Relational DB -->
+                <div style="flex: 0 0 45%;">
                   <div class="diagram-rect diagram-rect-green text-start p-3">
                     <div class="fw-bold text-green fs-6 mb-2"><i class="fas fa-database me-1"></i> SQL Relational DB</div>
                     <div class="diagram-item-row">users (id PK, email, pwd)</div>
@@ -1092,7 +1125,7 @@
             </div>
 
             <ul class="timeline-list">
-              <li>Pursuing postgraduate specialization in Computer Science with a current cumulative score of <strong class="text-accent">8.39 CGPA</strong>.</li>
+              <li>Pursuing postgraduate specialization in Computer Science with a current cumulative score of <strong class="text-accent">7.96 CGPA</strong>.</li>
               <li>Hands-on academic focus in Advanced Data Structures, Machine Learning algorithms, and Quantum Computing frameworks.</li>
             </ul>
 
@@ -1106,7 +1139,7 @@
                   </div>
                 </div>
                 <div class="text-end">
-                  <div class="text-accent fw-bold" style="font-size:0.88rem; color:#00e5ff !important;">8.39 CGPA</div>
+                  <div class="text-accent fw-bold" style="font-size:0.88rem; color:#00e5ff !important;">7.96 CGPA</div>
                   <div class="text-muted" style="font-size:0.72rem;">11010011</div>
                 </div>
               </div>
@@ -1215,7 +1248,7 @@
   <!-- Footer -->
   <footer class="py-4 text-center text-muted border-top border-secondary mt-5">
     <div class="container">
-      <small>© Siva Vivek Reddy | Portfolio </small>
+      <small>© Siva Vivek Reddy | Portfolio</small>
     </div>
   </footer>
 
@@ -1271,9 +1304,24 @@
       timelineNodes.forEach(node => observer.observe(node));
     }
 
+    function initMobileNavAutoClose() {
+      const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      const navCollapse = document.getElementById('navContent');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navCollapse) || new bootstrap.Collapse(navCollapse);
+            bsCollapse.hide();
+          }
+        });
+      });
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       typeEffect();
       initScrollReveal();
+      initMobileNavAutoClose();
     });
   </script>
 </body>
